@@ -25,7 +25,7 @@
             <form> 
               <input type="text" name="url" id="url" required />
             </form>
-            <button onclick="yourPlaylist()">Watch</button>
+            <button onclick="addVideo()">Watch</button>
           </div>
   
           <video id="video" controls></video>
@@ -99,28 +99,28 @@
   }
 
   function createButtonsBitrate() {
-    let d = document.getElementById("buttons");
-    if (d.innerHTML != "") {
-      d.innerHTML = "";
+    let newButton = document.getElementById("buttons");
+    if (newButton.innerHTML != "") {
+      newButton.innerHTML = "";
     }
     for (let i = 0; i < 5; i++) {
-      let e = document.createElement("button");
-      e.value = i;
-      e.addEventListener("click", changeBitrate);
-      e.class = "bear";
-      e.innerHTML = hls.levels[i].bitrate;
-      d.appendChild(e);
+      let button = document.createElement("button");
+      button.value = i;
+      button.addEventListener("click", changeBitrate);
+      button.class = "bear";
+      button.innerHTML = hls.levels[i].bitrate;
+      newButton.appendChild(button);
     }
   }
 
   function updateInfo() {
-    var lvl = hls.loadLevel;
-    console.log(lvl);
-    document.getElementById("bitrate").innerHTML = hls.levels[lvl].bitrate;
-    document.getElementById("height").innerHTML = hls.levels[lvl].height;
-    document.getElementById("width").innerHTML = hls.levels[lvl].width;
-    document.getElementById("video-codec").innerHTML = hls.levels[lvl].videoCodec;
-    document.getElementById("audio-codec").innerHTML = hls.levels[lvl].audioCodec;
+    var level = hls.loadLevel;
+    console.log(level);
+    document.getElementById("bitrate").innerHTML = hls.levels[level].bitrate;
+    document.getElementById("height").innerHTML = hls.levels[level].height;
+    document.getElementById("width").innerHTML = hls.levels[level].width;
+    document.getElementById("video-codec").innerHTML = hls.levels[level].videoCodec;
+    document.getElementById("audio-codec").innerHTML = hls.levels[level].audioCodec;
   }
 
   function validURL(str) {
@@ -136,7 +136,7 @@
     return !!pattern.test(str);
   }
 
-  function yourPlaylist() {
+  function addVideo() {
     let playlistUrl = document.getElementById("url").value;
     if (validURL(playlistUrl)) {
       loadVideo(playlistUrl);

@@ -51,7 +51,6 @@ margin: 60px;
   justify-content: flex-start;
 }
 
-
 #buttons {
   display: flex;
   justify-content: flex-start;
@@ -76,9 +75,6 @@ button {
   flex: 1;
 }
 
-#info{
-  padding-left: 10px;
-}
 div#info span{
   font-weight: bold;
 }
